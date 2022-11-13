@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\SubCategory;
+use App\Models\Category;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->bind('path.public', function() {
+            // return base_path('../public_html');
+            return base_path('/public');
+        });
     }
 
     /**
@@ -24,5 +31,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        View::composer('*', function($view)
+        {
+            $categorynavbar = Category::orderBy('name')->get();
+            $subcategorynavbar = SubCategory::orderBy('name')->get();
+            $view->with('categorynavbar', $categorynavbar)->with('subcategorynavbar',$subcategorynavbar);
+        });
     }
 }
