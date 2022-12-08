@@ -12,6 +12,7 @@ use App\Models\SubCategory;
 use App\Models\Headline;
 use App\Models\Tempat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -29,39 +30,64 @@ class HomeController extends Controller
         // }
         $data = Destinasi::whereIn('isIcon', [1])->get();
 
-        if(Category::take(1)->count() == 0){
+        if (Category::take(1)->count() == 0) {
             $firstSize = 0;
-        }else{
-            $firstSize = Tempat::where('tags', 'LIKE', '%'.Category::take(1)->get()[0]->name.'%')->count();
+        } else {
+            $firstSize = Tempat::where('tags', 'LIKE', '%' . Category::take(1)->get()[0]->name . '%')->count();
         }
 
-        return view('pages.home')
-        ->with('first', Category::take(1)->get())
-        ->with('firstSize', $firstSize)
-        ->with('firstList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(3)->get()[2]->name.'%')->take(5)->get())
-        ->with('second', Category::take(1)->get())
-        ->with('secondSize', $firstSize)
-        ->with('secondList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(2)->get()[1]->name.'%')->take(5)->get())
-        ->with('acaras', Acara::take(5)->get())
-        // ->with('firstList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(4)->get()[1]->name.'%')->take(5)->get())
-        // ->with('firstList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(4)->get()[2]->name.'%')->take(5)->get())
-        // ->with('firstList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(4)->get()[3]->name.'%')->take(5)->get())
+        $logo = Storage::url('logo.png');
 
-        ->with('headline', Headline::take(3)->get())
-        // ->with('akomodasi', Akomodasi::latest()->take(6)->get())
-        ->with('akomodasiSize', Akomodasi::count())
-        ->with('destinasiSize', Destinasi::count())
-        ->with('kulinerSize', Kuliner::count())
-        ->with('acaraSize', Acara::count())
-        // ->with('destinasiIcon', $data)
-        ->with('destinasiIcon', Destinasi::where('isIcon', 1)->take(1)->get())
-        ->with('akomodasiIcon', Akomodasi::where('isIcon', 1)->take(1)->get())
-        ->with('kulinerIcon', Kuliner::where('isIcon', 1)->take(1)->get())
-        ->with('acaraIcon', Acara::where('isIcon', 1)->take(1)->get())
-        ->with('destinasi', Destinasi::whereIn('isHeadline',[1])->take(6)->get())
-        ->with('akomodasi', Akomodasi::whereIn('isHeadline',[1])->take(6)->get())
-        ->with('kuliner', Kuliner::whereIn('isHeadline',[1])->take(6)->get())
-        ->with('acara', Acara::whereIn('isHeadline',[1])->take(6)->get());
+        return inertia('Home/Index', [
+            'first' => Category::take(1)->get(),
+            'firstSize' => $firstSize,
+            'firstList' => Tempat::where('tags', 'LIKE', '%' . Category::take(1)->get()[0]->name . '%')->take(5)->get(),
+            'second' => Category::take(1)->get(),
+            'secondSize' => $firstSize,
+            'secondList' => Tempat::where('tags', 'LIKE', '%' . Category::take(1)->get()[0]->name . '%')->take(5)->get(),
+            'acaras' => Acara::take(5)->get(),
+            'headline' => Headline::take(3)->get(),
+            'akomodasiSize' => Akomodasi::count(),
+            'destinasiSize' => Destinasi::count(),
+            'kulinerSize' => Kuliner::count(),
+            'acaraSize' => Acara::count(),
+            'destinasiIcon' => Destinasi::where('isIcon', 1)->take(1)->get(),
+            'akomodasiIcon' => Akomodasi::where('isIcon', 1)->take(1)->get(),
+            'kulinerIcon' => Kuliner::where('isIcon', 1)->take(1)->get(),
+            'acaraIcon' => Acara::where('isIcon', 1)->take(1)->get(),
+            'destinasi' => Destinasi::whereIn('isHeadline', [1])->take(6)->get(),
+            'akomodasi' => Akomodasi::whereIn('isHeadline', [1])->take(6)->get(),
+            'kuliner' => Kuliner::whereIn('isHeadline', [1])->take(6)->get(),
+            'acara' => Acara::whereIn('isHeadline', [1])->take(6)->get(),
+        ]);
+
+        // return view('pages.home')
+        // ->with('first', Category::take(1)->get())
+        // ->with('firstSize', $firstSize)
+        // ->with('firstList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(3)->get()[2]->name.'%')->take(5)->get())
+        // ->with('second', Category::take(1)->get())
+        // ->with('secondSize', $firstSize)
+        // ->with('secondList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(2)->get()[1]->name.'%')->take(5)->get())
+        // ->with('acaras', Acara::take(5)->get())
+        // // ->with('firstList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(4)->get()[1]->name.'%')->take(5)->get())
+        // // ->with('firstList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(4)->get()[2]->name.'%')->take(5)->get())
+        // // ->with('firstList', Tempat::where('tags', 'LIKE', '%'.SubCategory::take(4)->get()[3]->name.'%')->take(5)->get())
+
+        // ->with('headline', Headline::take(3)->get())
+        // // ->with('akomodasi', Akomodasi::latest()->take(6)->get())
+        // ->with('akomodasiSize', Akomodasi::count())
+        // ->with('destinasiSize', Destinasi::count())
+        // ->with('kulinerSize', Kuliner::count())
+        // ->with('acaraSize', Acara::count())
+        // // ->with('destinasiIcon', $data)
+        // ->with('destinasiIcon', Destinasi::where('isIcon', 1)->take(1)->get())
+        // ->with('akomodasiIcon', Akomodasi::where('isIcon', 1)->take(1)->get())
+        // ->with('kulinerIcon', Kuliner::where('isIcon', 1)->take(1)->get())
+        // ->with('acaraIcon', Acara::where('isIcon', 1)->take(1)->get())
+        // ->with('destinasi', Destinasi::whereIn('isHeadline',[1])->take(6)->get())
+        // ->with('akomodasi', Akomodasi::whereIn('isHeadline',[1])->take(6)->get())
+        // ->with('kuliner', Kuliner::whereIn('isHeadline',[1])->take(6)->get())
+        // ->with('acara', Acara::whereIn('isHeadline',[1])->take(6)->get());
     }
 
     /**

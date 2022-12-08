@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.bola-jalan {
+    /* width: 100%; */
+    offset-path: path("M 1338 -122 L 286.431 565.075");
+}
+
+.bola-jalan2 {
+    /* width: 100%; */
+    offset-path: path("M 283 615 L -118 417");
+}
