@@ -5,8 +5,8 @@ export default function NavItem({ icon, title, href, active }) {
         <li className="">
             <a
                 href={href}
-                className={`flex items-center hover:text-white duration-150 gap-x-2 px-4 py-2 rounded-md text-sm ${
-                    active ? "text-white" : "text-gray-500"
+                className={`flex h-full items-center hover:text-white duration-150 gap-x-2 px-4 py-2 rounded-md text-sm ${
+                    active ? "text-white" : "text-gray-100"
                 }`}
             >
                 {icon}

@@ -1,43 +1,54 @@
 import React from "react";
 import VisiMisiIcon from "./VisiMisiIcon";
 import VisiMisiText from "./VisiMisiText";
+import { motion } from "framer-motion";
 
 export default function VisiMisi() {
     return (
-        <div className="-mb-10 relative z-20 mt-52 px-32">
+        <motion.div
+            initial={{ opacity: 0, y: -90 }}
+            whileHover={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 90 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="-mb-10 relative z-20 mt-72 px-32"
+        >
             <div className="bg-[#23A6F0] font-heading py-12 px-28 rounded-xl grid grid-cols-5">
-                <VisiMisiIcon
-                    icon={<i class="fa-solid fa-gear text-4xl"></i>}
-                />
+                <VisiMisiIcon icon={<img src="/vector/Object.png" />} />
                 <VisiMisiIcon connector />
-                <VisiMisiIcon
-                    icon={<i class="fa-solid fa-gear text-4xl"></i>}
-                />
+                <VisiMisiIcon icon={<img src="/vector/Gear.png" />} />
                 <VisiMisiIcon connector />
-                <VisiMisiIcon
-                    icon={<i class="fa-solid fa-gear text-4xl"></i>}
-                />
+                <VisiMisiIcon icon={<img src="/vector/bumi.png" />} />
                 <VisiMisiText
                     title={"Rencana Kerja"}
                     text={
-                        "  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et necessitatibus voluptatum a ut vel maxime alias quo qui reprehenderit error quisquam nam minima non itaque, ratione atque earum tenetur iure."
+                        "Proses yang berorientasi pada hasil yang ingin dicapai selama kurun waktu 1 (satu) atau 2 (dua) tahun kedepan dengan tetap memperhatikan potensi, peluang dan kendla yang ada, atau yang mungkin timbul nantinya. "
                     }
                 />
                 <VisiMisiText title={""} />
                 <VisiMisiText
                     title={"Visi dan Misi"}
                     text={
-                        "  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et necessitatibus voluptatum a ut vel maxime alias quo qui reprehenderit error quisquam nam minima non itaque, ratione atque earum tenetur iure."
+                        <p>
+                            Visi : "Salatiga HATI BERIMAN yang SMART" <br />{" "}
+                            Misi : mewujudkan lingkunagn yang tentram, damai,
+                            adil dalam gender dan usia, sehat dan kondusif dalam
+                            situasi apapun. Mengembangkan ekonomi masyarakat
+                            pada khususnya UMKM di kota Salatiga. Dan juga
+                            meningkatkan kualitas pelayanan Pendidikan,
+                            Kesehatan dan public agar menciptakan masyarakat
+                            yang berpendidikan dan memiliki pemerintahan yang
+                            baik.
+                        </p>
                     }
                 />
                 <VisiMisiText title={""} />
                 <VisiMisiText
                     title={"Inovasi"}
                     text={
-                        "  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et necessitatibus voluptatum a ut vel maxime alias quo qui reprehenderit error quisquam nam minima non itaque, ratione atque earum tenetur iure."
+                        "Membuat terobosan yang berbeda dari yang lain dan yang sudah ada sebelumnya, memecahkan masalah secara kreatif sehingga menciptakan sebuah pelayanan yang prima."
                     }
                 />
             </div>
-        </div>
+        </motion.div>
     );
 }

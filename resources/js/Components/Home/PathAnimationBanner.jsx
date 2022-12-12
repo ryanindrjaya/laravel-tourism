@@ -6,7 +6,10 @@ export default function PathAnimationBanner() {
 
     return (
         <div className="container relative">
-            <img
+            <motion.img
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
                 src="/vector/Polygon 1.png"
                 className="absolute left-0 -top-24 w-screen z-0"
             />

@@ -1,10 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import NavItem from "./Nav/NavItem";
+import { motion } from "framer-motion";
 
 export default function Header() {
     return (
-        <div className="w-full flex justify-between gap-x-28 items-center absolute top-0 px-16 py-3 z-50 bg-gradient-to-b from-[#23A6F0CC]/60 to-white/60">
+        <motion.div
+            initial={{ opacity: 0, y: -90 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="w-full flex justify-between gap-x-28 items-center absolute top-0 px-16 py-3 z-30 bg-gradient-to-b from-[#23A6F0CC]/60 to-white/30"
+        >
             <div className="flex items-center">
                 <img
                     src="/img/logo-disbudpar.svg"
@@ -23,36 +29,26 @@ export default function Header() {
             <div className="flex items-center gap-x-10">
                 <ul className="flex items-center">
                     <NavItem
-                        icon={<i class="fas fa-car"></i>}
+                        icon={<i class="fas fa-home"></i>}
                         title="Beranda"
                         href="/"
                         active
                     />
                     <NavItem
-                        icon={<i class="fas fa-suitcase-rolling"></i>}
-                        title="Destinasi"
-                        href="/destinasi"
+                        icon={<i class="fas fa-map-pin"></i>}
+                        title="Tempat"
+                        href="/cari"
                     />
                     <NavItem
-                        icon={<i class="fas fa-thumbs-up"></i>}
-                        title="Ekonomi Kreatif"
-                        href="/ekonomi-kreatif"
-                    />
-                    <NavItem
-                        icon={<i class="fas fa-suitcase-rolling"></i>}
-                        title="Destinasi"
-                        href="/destinasi"
-                    />
-                    <NavItem
-                        icon={<i class="fas fa-suitcase-rolling"></i>}
-                        title="Destinasi"
-                        href="/destinasi"
+                        icon={<i class="fas fa-calendar-alt"></i>}
+                        title="Acara"
+                        href="/fullcalender"
                     />
                 </ul>
                 <div>
-                    <i class="fas fa-search text-2xl text-gray-500 cursor-pointer"></i>
+                    <i class="fas fa-search text-2xl text-gray-100 cursor-pointer"></i>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }

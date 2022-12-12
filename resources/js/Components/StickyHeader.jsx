@@ -6,9 +6,11 @@ import NavItem from "./Nav/NavItem";
 export default function Header() {
     return (
         <motion.div
-            initial={{ opacity: -20 }}
-            animate={{ opacity: 0 }}
-            className="w-full flex justify-between gap-x-28 items-center fixed top-0 px-16 py-3 z-50 bg-[#23A6F0CC] shadow-md"
+            initial={{ y: -20 }}
+            animate={{ y: 0 }}
+            exit={{ y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="w-full flex justify-between gap-x-28 items-center fixed top-0 px-16 py-3 z-50 bg-[#23a5f0] shadow-md"
         >
             <div className="flex items-center">
                 <img
@@ -28,34 +30,24 @@ export default function Header() {
             <div className="flex items-center gap-x-10">
                 <ul className="flex items-center">
                     <NavItem
-                        icon={<i class="fas fa-car"></i>}
+                        icon={<i class="fas fa-home"></i>}
                         title="Beranda"
                         href="/"
                         active
                     />
                     <NavItem
-                        icon={<i class="fas fa-suitcase-rolling"></i>}
-                        title="Destinasi"
-                        href="/destinasi"
+                        icon={<i class="fas fa-map-pin"></i>}
+                        title="Tempat"
+                        href="/cari"
                     />
                     <NavItem
-                        icon={<i class="fas fa-thumbs-up"></i>}
-                        title="Ekonomi Kreatif"
-                        href="/ekonomi-kreatif"
-                    />
-                    <NavItem
-                        icon={<i class="fas fa-suitcase-rolling"></i>}
-                        title="Destinasi"
-                        href="/destinasi"
-                    />
-                    <NavItem
-                        icon={<i class="fas fa-suitcase-rolling"></i>}
-                        title="Destinasi"
-                        href="/destinasi"
+                        icon={<i class="fas fa-calendar-alt"></i>}
+                        title="Acara"
+                        href="/fullcalender"
                     />
                 </ul>
                 <div>
-                    <i class="fas fa-search text-2xl text-gray-500 cursor-pointer"></i>
+                    <i class="fas fa-search text-2xl text-gray-100 cursor-pointer"></i>
                 </div>
             </div>
         </motion.div>

@@ -10,6 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/f540826c4d.js" crossorigin="anonymous"></script>
+  <link href="{{ asset('../css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('../css/style.css') }}" rel="stylesheet">
+  <link href="{{ asset('../css/vendors.css') }}" rel="stylesheet">
+
+  <!-- CUSTOM CSS -->
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
   @viteReactRefresh
   @vite('resources/js/app.jsx')
   @vite('resources/css/app.css')

@@ -16,3 +16,73 @@ a:hover {
     /* width: 100%; */
     offset-path: path("M 283 615 L -118 417");
 }
+
+.kotak-jalan {
+    offset-path: path(
+        "M620.5 346.5C620.5 535.432 482.556 688.5 312.5 688.5C142.444 688.5 4.5 535.432 4.5 346.5C4.5 157.568 142.444 4.5 312.5 4.5C482.556 4.5 620.5 157.568 620.5 346.5Z"
+    );
+}
+
+.bulat-jalan {
+    offset-path: path(
+        "M39.1591 221.611h476.339s49.5 0 49.5 49.5v620.215s0 49.5 -49.5 49.5h-476.339s-49.5 0 -49.5 -49.5v-620.215s0 -49.5 49.5 -49.5"
+    );
+}
+
+.example-container {
+    /* overflow-x: hidden;
+    overflow-y: hidden; */
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 0;
+}
+
+.next,
+.prev {
+    top: calc(50% - 20px);
+    position: absolute;
+    border-radius: 30px;
+    width: 40px;
+    background-color: white;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev {
+    left: 10px;
+    transform: scale(-1);
+}
+
+.image-carousel {
+    position: absolute;
+    max-width: 100vw;
+}
+
+.refresh {
+    padding: 10px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

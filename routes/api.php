@@ -32,3 +32,5 @@ Route::get('getInfo', [App\Http\Controllers\GooglePlayController::class, 'getInf
 Route::get('mobileactionlogin', [App\Http\Controllers\LoginController::class, 'mobileactionlogin'])->name('mobileactionlogin');
 Route::get('mobileactionlogout', [App\Http\Controllers\LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 Route::get('mobilepostRegistration', [App\Http\Controllers\LoginController::class, 'mobilepostRegistration'])->name('mobilepostRegistration');
+
+Route::apiResource('/search', App\Http\Controllers\Api\SearchController::class);
