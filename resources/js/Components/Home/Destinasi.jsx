@@ -16,7 +16,7 @@ export default function Destinasi({ data }) {
                     Beberapa Destinasi yang <br />
                     Menarik untuk dikunjungi
                 </h1>
-                <ScrollContainer className="overflow-scroll flex gap-x-7 pt-20 pb-6 scroll-m-5 snap-x pl-16">
+                <ScrollContainer className="overflow-scroll flex gap-x-7 pt-20 pb-6 scroll-m-5 snap-x mb-4 pl-16">
                     {data?.map((item) => (
                         <Card
                             title={item.name}
@@ -27,6 +27,12 @@ export default function Destinasi({ data }) {
                         />
                     )) || "Loading..."}
                 </ScrollContainer>
+                <a
+                    href="/cari"
+                    className="ml-16 duration-100 cursor-pointer hover:bg-[#FBB52F]/80 bg-[#FBB52F] py-3 px-5 rounded-lg mt-24 font-bold text-white"
+                >
+                    Lihat destinasi lainnya
+                </a>
             </div>
             <img
                 src="/vector/circle.png"

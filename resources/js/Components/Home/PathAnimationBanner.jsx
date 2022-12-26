@@ -5,16 +5,16 @@ export default function PathAnimationBanner() {
     const transition = { duration: 14, yoyo: Infinity, ease: "easeInOut" };
 
     return (
-        <div className="container relative">
+        <div className="w-full relative">
             <motion.img
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
                 src="/vector/Polygon 1.png"
-                className="absolute left-0 -top-24 w-screen z-0"
+                className="absolute left-0 lg:scale-100 -top-7 lg:-top-24 w-full z-0"
             />
             <svg
-                className="absolute top-24 left-0 z-0"
+                className="absolute top-16 lg:top-24 left-0 w-full z-0 "
                 viewBox="0 0 1140 575"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ export default function PathAnimationBanner() {
                 </defs>
             </svg>
             <svg
-                className="absolute top-36 left-0 z-0"
+                className="absolute top-24 lg:top-36 left-0 z-0"
                 viewBox="0 0 1140 575"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -93,14 +93,14 @@ export default function PathAnimationBanner() {
             </svg>
 
             <motion.img
-                className="bola-jalan absolute -bottom-72 -rotate-3 left-36"
+                className="hidden lg:block bola-jalan absolute -bottom-72 -rotate-3 left-36"
                 src="/vector/bolakuning.png"
                 initial={{ offsetDistance: "0%", rotate: 0 }}
                 animate={{ offsetDistance: "100%", rotate: 360 }}
                 transition={transition}
             />
             <motion.img
-                className="bola-jalan2 absolute -bottom-72 rotate-6 left-12"
+                className="hidden lg:block bola-jalan2 absolute -bottom-72 rotate-6 left-12"
                 src="/vector/kotakorange.png"
                 initial={{ offsetDistance: "0%" }}
                 animate={{ offsetDistance: "100%" }}

@@ -22,7 +22,7 @@ export default function CardEventItem({
         return str.length > n ? str.slice(0, n - 1) + "..." : str;
     }
 
-    const collapsedCard = `w-1/4 h-[450px] ${isOdd} bg-white rounded-2xl shadow-lg hover:shadow-md cursor-pointer p-6`;
+    const collapsedCard = `lg:w-1/4 w-full h-[450px] ${isOdd} bg-white rounded-2xl shadow-lg hover:shadow-md cursor-pointer p-6`;
 
     return (
         <>
@@ -35,10 +35,10 @@ export default function CardEventItem({
                     <motion.div
                         layoutId="expandable-card"
                         // onClick={collapseItem}
-                        className={`w-5/6 h-fit absolute inset-0 m-auto z-50 ${isOdd} bg-white rounded-2xl shadow-lg hover:shadow-md px-24 py-16`}
+                        className={`w-full lg:w-5/6 h-screen lg:absolute fixed inset-0 m-auto z-[60] ${isOdd} overflow-scroll bg-white rounded-2xl shadow-lg hover:shadow-md px-12 lg:px-24 py-44 lg:py-16`}
                         layout
                     >
-                        <div className="w-full h-[634px] absolute inset-0">
+                        <div className="w-full h-[200px] lg:h-[634px] absolute inset-0">
                             <div className="relative w-full h-full">
                                 <img
                                     src="/vector/blob.png"
@@ -46,15 +46,15 @@ export default function CardEventItem({
                                 />
                                 <img
                                     src="/vector/blob2.png"
-                                    className="absolute z-10 -bottom-10 left-16"
+                                    className="absolute z-10 -bottom-1 lg:-bottom-10 left-7 lg:left-16"
                                 />
                                 <i
                                     onClick={collapseItem}
-                                    className="fas fa-close absolute top-3 right-5 text-3xl cursor-pointer"
+                                    className="fas fa-close absolute top-32 lg:top-3 right-5 text-3xl cursor-pointer"
                                 ></i>
                             </div>
                         </div>
-                        <div className="h-[570px] w-full overflow-scroll relative z-20">
+                        <div className="h-auto lg:h-[570px] w-full lg:overflow-scroll relative z-20">
                             <img
                                 className="rounded-md relative z-30 w-full h-auto shadow-md"
                                 src={`/img/acara/${image}`}
@@ -63,7 +63,7 @@ export default function CardEventItem({
                         <h1 className="font-bold font-heading relative z-30 text-2xl mt-7">
                             {data.name}
                         </h1>
-                        <div className="pr-16 w-3/12 flex gap-x-2 mt-2 mb-4 items-center">
+                        <div className="pr-16 w-1/2 lg:w-3/12 flex gap-x-2 mt-2 mb-4 items-center">
                             <div className="w-4/12 h-2 bg-[#B9EAA8] rounded-md"></div>
                             <div className="w-6/12 h-2 bg-[#B9EAA8] rounded-md"></div>
                             <div className="w-2/12 h-2 bg-[#B9EAA8] rounded-md"></div>

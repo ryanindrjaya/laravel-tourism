@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 export default function Footer() {
     return (
         <div className="w-full z-40 h-60 bg-[#252B42]">
-            <div className="max-w-4xl z-50 mx-auto relative">
-                <div className="w-full absolute -top-10 left-[45%] transform -translate-x-1/2 py-3 px-11 flex justify-between bg-[#DDDDDD] rounded-md">
+            <div className="lg:max-w-5xl z-50 mx-auto relative">
+                <div className="w-4/5 lg:w-full absolute -top-10 left-[45%] transform -translate-x-1/2 py-3 px-11 flex justify-between bg-[#DDDDDD] rounded-md">
                     <div className="flex items-center">
                         <div className="ml-4">
                             <h1 className="text-[#DDDDDD] font-heading font-bold text-xl">
@@ -17,18 +17,18 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full absolute -top-5 left-[50%] transform -translate-x-1/2 py-3 px-11 flex justify-between bg-[#23A6F0] rounded-md">
+                <div className="w-4/5 lg:w-full absolute -top-5 left-[50%] transform -translate-x-1/2 py-3 px-4 lg:px-11 flex justify-between bg-[#23A6F0] rounded-md">
                     <div className="flex w-1/2 items-center">
                         <img
                             src="/img/logo-disbudpar.svg"
-                            className="h-12"
+                            className="h-8 lg:h-12"
                             alt="Logo Disbudpar"
                         />
                         <div className="ml-4">
-                            <h1 className="text-white font-heading font-bold text-xl">
+                            <h1 className="text-white font-heading font-bold text-md lg:text-xl">
                                 Pemerintah Kota
                             </h1>
-                            <h1 className="text-white font-heading font-bold text-xl">
+                            <h1 className="text-white font-heading font-bold text-md lg:text-xl">
                                 Salatiga
                             </h1>
                         </div>
@@ -37,20 +37,25 @@ export default function Footer() {
                         href="/add-place"
                         initial={{ scale: 1 }}
                         whileHover={{ scale: 1.1 }}
-                        className="w-1/2 cursor-pointer flex justify-end"
+                        className="w-1/4 cursor-pointer flex justify-end"
                     >
                         <div className="font-bold relative text-white bg-[#252B42] text-center flex items-center rounded-2xl py-1 pl-6 pr-4">
-                            <span>Tambah tempat anda disini</span>
+                            <span className="lg:text-lg lg:inline hidden text-sm">
+                                Tambah tempat anda disini
+                            </span>
+                            <span className="lg:text-lg inline lg:hidden text-sm">
+                                Tambah tempat
+                            </span>
                             <img
                                 src="/vector/map.svg"
-                                className="absolute scale-150 top-1/2 transform -left-11 -translate-y-1/2"
+                                className="absolute scale-125 lg:scale-150 top-1/2 transform -left-9 lg:-left-11 -translate-y-1/2"
                             />
                         </div>
                     </motion.a>
                 </div>
-                <div className="pt-24 grid grid-cols-12 gap-x-8">
+                <div className="pt-24 lg:px-0 px-10 grid grid-cols-12 gap-x-8">
                     <div className="col-span-3">
-                        <h1 className="font-bold text-white text-2xl mb-2">
+                        <h1 className="font-bold text-white text-lg lg:text-2xl mb-2">
                             Butuh Bantuan?
                         </h1>
                         <div className="w-full flex gap-x-2 mb-3 items-center">

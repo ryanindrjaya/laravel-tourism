@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import useWindowDimensions from "../useWindowDimensions";
 
 export default function TempatCard({
     title,
@@ -13,6 +14,7 @@ export default function TempatCard({
     function truncate(str, n) {
         return str.length > n ? str.slice(0, n - 1) + "..." : str;
     }
+    const { height, width } = useWindowDimensions();
 
     const firstFive = [0, 1, 2, 3, 4];
 
@@ -53,7 +55,11 @@ export default function TempatCard({
                     <div className="w-6/12 h-2 bg-[#D9D9D9] rounded-md"></div>
                     <div className="w-2/12 h-2 bg-[#D9D9D9] rounded-md"></div>
                 </div>{" "}
-                <p className="text-sm h-20">{truncate(deskripsi, 200)}</p>
+                <p className="text-sm h-20">
+                    {width >= 768
+                        ? truncate(deskripsi, 200)
+                        : truncate(deskripsi, 50)}
+                </p>
                 <div className="w-full flex justify-end">
                     <a
                         href={`/tempat/${id}`}

@@ -55,20 +55,20 @@ export default function HeroBanner() {
     }
 
     return (
-        <div className="relative z-10 flex flex-col w-full mb-28 h-screen px-28 items-center text-white justify-center">
+        <div className="relative z-10 flex flex-col w-full mb-28 h-screen px-7 lg:px-28 items-center text-white justify-center">
             <img
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, ease: "easeInOut", delay: 0.5 }}
                 src="/vector/Vector.png"
-                className="absolute left-0 top-0 w-screen z-0"
+                className="absolute left-0 top-0 h-screen lg:h-auto w-screen z-0"
             />
-            <div className="flex gap-x-3 w-full">
+            <div className="flex flex-col lg:flex-row items-center lg:gap-x-3 w-full">
                 <div className="w-1/2">
                     <EarthAnimation
                         onMouseMove={handleMouse}
                         onMouseLeave={handleMouseLeave}
-                        className="relative z-20 w-[600px] h-[600px]"
+                        className="relative flex-1 z-20 xl:w-[400px] xl:h-[400px]"
                     >
                         <motion.img
                             initial={{ opacity: 0 }}
@@ -80,11 +80,11 @@ export default function HeroBanner() {
                             }}
                             style={{ x: rotateX, y: rotateY }}
                             src="/vector/search/bumiSearch.svg"
-                            // className="absolute top-1/2 z-40 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                            className="w-[500px] lg:w-[25rem]"
                         />
                     </EarthAnimation>
                 </div>
-                <div className="w-1/2 relative font-heading text-white flex flex-col justify-center text-4xl -ml-16 z-10 h-full">
+                <div className="lg:w-1/2 w-full relative font-heading text-white flex flex-col justify-center text-4xl lg:-ml-7 z-10 h-full">
                     <h1 className="font-bold text-white">Daftar Tempat</h1>
                     <h1 className="font-normal text-white">
                         Jelajahi Berbagai Tempat
@@ -94,13 +94,13 @@ export default function HeroBanner() {
                         variants={idleMovementVariants}
                         animate="idle1"
                         src="/vector/kotakbiru.png"
-                        className="absolute top-3/4 left-4 transform z-10 -translate-x-1/4 -translate-y-1/2"
+                        className="absolute top-3/4 hidden lg:block left-4 transform z-10 -translate-x-1/4 -translate-y-1/2"
                     />
                     <motion.img
                         variants={idleMovementVariants}
                         animate="idle2"
                         src="/vector/bolakuning.png"
-                        className="absolute -bottom-4 left-0 transform z-10 -translate-x-1/4 -translate-y-1/2"
+                        className="absolute -bottom-16 lg:-bottom-4 left-0 transform z-10 -translate-x-1/4 -translate-y-1/2"
                     />
                     <motion.img
                         variants={idleMovementVariants}
@@ -110,7 +110,7 @@ export default function HeroBanner() {
                     />
                     <img
                         src="/vector/Man Pose.png"
-                        className="absolute -bottom-10 lg:scale-150 left-1/2 transform -translate-x-1/2 "
+                        className="absolute -bottom-44 lg:scale-150 -right-[5rem] lg:right-[2rem] transform -translate-x-1/2 "
                     />
                 </div>
             </div>

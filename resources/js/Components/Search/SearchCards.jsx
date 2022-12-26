@@ -49,8 +49,8 @@ export default function SearchCards({ allcat = [], subcat = [], tempat = [] }) {
 
     return (
         <div className="min-h-screen pb-60 relative z-20 lg:mt-[340px] mt-32">
-            <div className="px-10 grid grid-cols-12 gap-x-9">
-                <div className="col-span-3 h-fit sticky top-36 flex flex-col gap-y-2 bg-white rounded-2xl shadow-md px-5 py-6">
+            <div className="px-1 lg:px-10 grid grid-cols-12 gap-x-3 lg:gap-x-9">
+                <div className="col-span-3 h-fit sticky top-36 flex flex-col gap-y-2 bg-white rounded-2xl shadow-md lg:px-5 lg:py-6">
                     {loading ? (
                         <p>loading...</p>
                     ) : (

@@ -24,7 +24,7 @@ export default function MenuItem({
                         backgroundColor: isOpen ? "#FF6F28" : "#FFFFFF",
                         color: isOpen ? "#FFFFFF" : "#000000",
                     }}
-                    className="flex py-3 cursor-pointer px-5 rounded-t-md gap-x-2 items-center "
+                    className="flex py-3 cursor-pointer lg:px-5 rounded-t-md gap-x-2 items-center "
                 >
                     <i className={`${icon} text-xl`}></i>
                     <p className="text-sm font-normal font-heading">{title}</p>
@@ -74,7 +74,7 @@ export default function MenuItem({
                                         selected === item.id
                                             ? "bg-gray-100"
                                             : ""
-                                    } duration-100 gap-x-2 items-center py-3 px-5`}
+                                    } duration-100 gap-x-2 items-center py-3 lg:px-5`}
                                 >
                                     <i className={`${item.icon} text-xl`}></i>
                                     <p className="text-sm font-normal font-heading">

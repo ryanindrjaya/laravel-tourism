@@ -9,23 +9,29 @@ import StickyHeader from "../../Components/StickyHeader";
 import Event from "../../Components/Home/Event";
 import Footer from "../../Components/Footer";
 import MainLayout from "../../Layouts/MainLayout";
+import { Head } from "@inertiajs/inertia-react";
 
 export default function Index(props) {
     const destinasi = props?.destinasi || [];
     const acaras = props?.acaras || [];
 
     return (
-        <MainLayout>
-            <PathAnimationBanner />
+        <>
+            <Head>
+                <title>Dolan Salatiga | Disbudpar Salatiga</title>
+            </Head>
+            <MainLayout>
+                <PathAnimationBanner />
 
-            <HeroBanner />
+                <HeroBanner />
 
-            <VisiMisi />
+                <VisiMisi />
 
-            <div className="bg-[#EFF5FF]">
-                <Destinasi data={destinasi} />
-                <Event data={acaras} />
-            </div>
-        </MainLayout>
+                <div className="bg-[#EFF5FF]">
+                    <Destinasi data={destinasi} />
+                    <Event data={acaras} />
+                </div>
+            </MainLayout>
+        </>
     );
 }

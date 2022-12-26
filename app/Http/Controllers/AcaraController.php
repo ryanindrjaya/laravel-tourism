@@ -17,55 +17,58 @@ class AcaraController extends Controller
     {
         //
         $position = 'Acara';
-        if($request->ajax()) {
-       
-            $data = Acara::whereDate('start', '>=', $request->start)
-                      ->whereDate('end',   '<=', $request->end)
-                      ->get();
- 
-            return response()->json($data);
-       }
-       return view('pages.acara.index')->with('acaras',Acara::get());
+        if ($request->ajax()) {
 
-    //    $acaraa = Acara::paginate(10);
-    //    error_log('Some message here.');
-    //    return view('pages.acara.index')->with('position', $position)
-    //    ->with('acaraa',$acaraa); ;
+            $data = Acara::whereDate('start', '>=', $request->start)
+                ->whereDate('end',   '<=', $request->end)
+                ->get();
+
+            return response()->json($data);
+        }
+        return inertia('Acara/Calendar', [
+            'acara' => Acara::get(),
+        ]);
+        // return view('pages.acara.index')->with('acaras', Acara::get());
+
+        //    $acaraa = Acara::paginate(10);
+        //    error_log('Some message here.');
+        //    return view('pages.acara.index')->with('position', $position)
+        //    ->with('acaraa',$acaraa); ;
     }
 
     public function ajax(Request $request)
     {
- 
+
         switch ($request->type) {
-           case 'add':
-              $event = Acara::create([
-                  'name' => $request->name,
-                  'start' => $request->start,
-                  'end' => $request->end,
-              ]);
- 
-              return response()->json($event);
-             break;
-  
-           case 'update':
-              $event = Acara::find($request->id)->update([
-                  'name' => $request->name,
-                  'start' => $request->start,
-                  'end' => $request->end,
-              ]);
- 
-              return response()->json($event);
-             break;
-  
-           case 'delete':
-              $event = Acara::find($request->id)->delete();
-  
-              return response()->json($event);
-             break;
-             
-           default:
-             # code...
-             break;
+            case 'add':
+                $event = Acara::create([
+                    'name' => $request->name,
+                    'start' => $request->start,
+                    'end' => $request->end,
+                ]);
+
+                return response()->json($event);
+                break;
+
+            case 'update':
+                $event = Acara::find($request->id)->update([
+                    'name' => $request->name,
+                    'start' => $request->start,
+                    'end' => $request->end,
+                ]);
+
+                return response()->json($event);
+                break;
+
+            case 'delete':
+                $event = Acara::find($request->id)->delete();
+
+                return response()->json($event);
+                break;
+
+            default:
+                # code...
+                break;
         }
     }
 
@@ -77,13 +80,12 @@ class AcaraController extends Controller
     public function create()
     {
         //
-        $tags = ["Alam","Budaya","Rekreasi"];
-        if(Auth::check()){
-            return view('pages.acara.create',compact('tags'));
-        }else{
+        $tags = ["Alam", "Budaya", "Rekreasi"];
+        if (Auth::check()) {
+            return view('pages.acara.create', compact('tags'));
+        } else {
             return redirect('/');
         }
-        
     }
     public function admin()
     {
@@ -91,7 +93,7 @@ class AcaraController extends Controller
         // $destinasi = Destinasi::all();
         // return view('pages.destinasi.admin', compact('destinasi', 'destinasi'));
         $acara = Acara::paginate(10);
-        return view('pages.acara.admin',['acara' => $acara]);
+        return view('pages.acara.admin', ['acara' => $acara]);
     }
 
     /**
@@ -116,9 +118,9 @@ class AcaraController extends Controller
 
         // error_log(implode(",",$request->get('addMoreInputFields')));
         $request->validate([
-            'tName'=>'required',
-            'tDesc'=> 'required',
-            'filename'=> 'required',
+            'tName' => 'required',
+            'tDesc' => 'required',
+            'filename' => 'required',
             'filename.*' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             // 'tVideo' => 'required',
             // 'tAddress' => 'required',
@@ -141,13 +143,13 @@ class AcaraController extends Controller
         //     $post->imageArray = str_replace(']','',str_replace(']','',str_replace('[','',str_replace('"','',json_encode($data)))));
         //     $post->image = str_replace('"','',json_encode($data[0])) ;
         // }
-        if($request->hasFile('filename')){
-            $nama=$request->filename->getClientOriginalName();
+        if ($request->hasFile('filename')) {
+            $nama = $request->filename->getClientOriginalName();
             $request->filename->move(public_path('img/acara'), $nama);
         }
         // $path = $image->getClientOriginalName();
         // time().'.'.$request->file->getClientOriginalExtension();
-            
+
         // $imageName = time().'.'.$request->image->getClientOriginalExtension();
         // $request->file->move(public_path('/images/gallert/'), $imageName);
 
@@ -160,7 +162,7 @@ class AcaraController extends Controller
         $post->mapUrl = $request->get('tMaps');
         $post->image = $nama;
         $post->imageArray = $nama;
-        
+
         // $post->seninJumat = $request->get('seninJumat1') . '-' . $request->get('seninJumat2');
         // $post->sabtuMinggu = $request->get('sabtuMinggu1') . '-' . $request->get('sabtuMinggu2');
 
@@ -168,31 +170,31 @@ class AcaraController extends Controller
         $post->start = $request->get('tStart');
         $post->end = $request->get('tEnd');
 
-        $post->tags = str_replace(']','',str_replace(']','',str_replace('[','',str_replace('"','',json_encode($request->get('tags'))))));
-        if($request->get('cDisabilitas') == 1){
+        $post->tags = str_replace(']', '', str_replace(']', '', str_replace('[', '', str_replace('"', '', json_encode($request->get('tags'))))));
+        if ($request->get('cDisabilitas') == 1) {
             $post->disabilitas = 1;
-        }else{
-            $post->disabilitas = 0; 
+        } else {
+            $post->disabilitas = 0;
         }
-        if($request->get('cParkir') == 1){
+        if ($request->get('cParkir') == 1) {
             $post->parkiran = 1;
-        }else{
-            $post->parkiran = 0; 
+        } else {
+            $post->parkiran = 0;
         }
-        if($request->get('cWifi') == 1){
+        if ($request->get('cWifi') == 1) {
             $post->wifi = 1;
-        }else{
-            $post->wifi = 0; 
+        } else {
+            $post->wifi = 0;
         }
-        if($request->get('cHeadline') == 1){
+        if ($request->get('cHeadline') == 1) {
             $post->isHeadline = 1;
-        }else{
+        } else {
             $post->isHeadline = 0;
         }
-        if($request->get('cIcon') == 1){
+        if ($request->get('cIcon') == 1) {
             $post->isIcon = 1;
-        }else{
-            $post->isIcon = 0; 
+        } else {
+            $post->isIcon = 0;
         }
         $post->save();
         return redirect('/admin')->with('success', 'gallery has been added');
@@ -206,8 +208,10 @@ class AcaraController extends Controller
      */
     public function show(Acara $acara)
     {
-        //
-        return view('pages.acara.detail')->with('acara', $acara);   
+        return inertia('Acara/Detail', [
+            'acara' => $acara
+        ]);
+        // return view('pages.acara.detail')->with('acara', $acara);   
     }
 
     /**
@@ -233,14 +237,14 @@ class AcaraController extends Controller
     {
         //
 
-        if($request->hasFile('filename')){
-            foreach($request->file('filename') as $images){
-                $nama=$images->getClientOriginalName();
+        if ($request->hasFile('filename')) {
+            foreach ($request->file('filename') as $images) {
+                $nama = $images->getClientOriginalName();
                 $images->move(public_path('img/acara'), $nama);
                 $data[] = $nama;
             }
-            $post->imageArray = str_replace(']','',str_replace(']','',str_replace('[','',str_replace('"','',json_encode($data)))));
-            $post->image = str_replace('"','',json_encode($data[0])) ;
+            $post->imageArray = str_replace(']', '', str_replace(']', '', str_replace('[', '', str_replace('"', '', json_encode($data)))));
+            $post->image = str_replace('"', '', json_encode($data[0]));
         }
         $post = Acara::find($acara->id);
         $post->name = $request->get('tName');
@@ -249,7 +253,7 @@ class AcaraController extends Controller
         // $post->address = $request->get('desa') . " " . $request->get('kecamatan');
         $post->desa = $request->get('desa');
         $post->mapUrl = $request->get('tMaps');
-        
+
         // $post->seninJumat = $request->get('seninJumat1') . '-' . $request->get('seninJumat2');
         // $post->sabtuMinggu = $request->get('sabtuMinggu1') . '-' . $request->get('sabtuMinggu2');
 
@@ -257,31 +261,31 @@ class AcaraController extends Controller
         $post->start = $request->get('tStart');
         $post->end = $request->get('tEnd');
 
-        $post->tags = str_replace(']','',str_replace(']','',str_replace('[','',str_replace('"','',json_encode($request->get('tags'))))));
-        if($request->get('cDisabilitas') == 1){
+        $post->tags = str_replace(']', '', str_replace(']', '', str_replace('[', '', str_replace('"', '', json_encode($request->get('tags'))))));
+        if ($request->get('cDisabilitas') == 1) {
             $post->disabilitas = 1;
-        }else{
-            $post->disabilitas = 0; 
+        } else {
+            $post->disabilitas = 0;
         }
-        if($request->get('cParkir') == 1){
+        if ($request->get('cParkir') == 1) {
             $post->parkiran = 1;
-        }else{
-            $post->parkiran = 0; 
+        } else {
+            $post->parkiran = 0;
         }
-        if($request->get('cWifi') == 1){
+        if ($request->get('cWifi') == 1) {
             $post->wifi = 1;
-        }else{
-            $post->wifi = 0; 
+        } else {
+            $post->wifi = 0;
         }
-        if($request->get('cHeadline') == 1){
+        if ($request->get('cHeadline') == 1) {
             $post->isHeadline = 1;
-        }else{
+        } else {
             $post->isHeadline = 0;
         }
-        if($request->get('cIcon') == 1){
+        if ($request->get('cIcon') == 1) {
             $post->isIcon = 1;
-        }else{
-            $post->isIcon = 0; 
+        } else {
+            $post->isIcon = 0;
         }
         $post->update();
         return redirect('/admin')->with('success', 'gallery has been added');
@@ -297,7 +301,7 @@ class AcaraController extends Controller
     {
         //
         $acara = Acara::findOrFail($id);
-	    $acara->delete();
+        $acara->delete();
         // $destinasi = Destinasi::find($id);
         // error_log($id);
         // $destinasi->delete();

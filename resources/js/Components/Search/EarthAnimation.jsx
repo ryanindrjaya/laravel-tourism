@@ -42,9 +42,7 @@ export default function EarthAnimation({
             className={className}
         >
             <svg
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                width="566"
-                height="463"
+                className="absolute top-1/2 left-1/2 w-[20rem] lg:w-[39rem] transform -translate-x-1/2 -translate-y-1/2"
                 viewBox="0 0 566 463"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

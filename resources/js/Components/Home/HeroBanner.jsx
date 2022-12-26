@@ -38,7 +38,7 @@ export default function HeroBanner() {
     };
 
     return (
-        <div className="relative mt-20 z-40 flex flex-col w-full h-screen items-center text-white justify-center">
+        <div className="relative mt-7 lg:mt-20 z-40 flex flex-col w-full h-screen items-center text-white justify-center">
             <motion.h1
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -52,7 +52,7 @@ export default function HeroBanner() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, ease: "easeInOut", delay: 2.3 }}
-                className="font-semibold mb-5 text-center text-white font-heading z-20 text-5xl"
+                className="font-semibold mb-5 text-center text-white font-heading z-20 text-3xl lg:text-5xl"
             >
                 Dinas Kebudayaan dan <br />
                 Pariwisata
@@ -61,7 +61,7 @@ export default function HeroBanner() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, ease: "easeInOut", delay: 2.3 }}
-                className="font-light text-center text-white font-heading z-20 text-5xl"
+                className="font-light text-center text-white font-heading z-20 text-3xl lg:text-5xl"
             >
                 Kota Salatiga
             </motion.h1>
@@ -76,9 +76,12 @@ export default function HeroBanner() {
     border-b-[1px] border-blue-400
   "
             >
-                <span class="flex flex-col justify-center items-center h-full text-white font-bold text-lg ">
+                <a
+                    href={"#visimisi"}
+                    class="flex flex-col justify-center items-center h-full text-white font-bold text-lg "
+                >
                     Mulai
-                </span>
+                </a>
             </motion.div>
             <motion.div
                 initial={{ opacity: 0 }}
@@ -94,7 +97,7 @@ export default function HeroBanner() {
                 >
                     <img
                         src="/vector/3dheader1.png"
-                        className="absolute right-20 -bottom-10"
+                        className="absolute lg:scale-100 scale-90 -right-4 -bottom-14 lg:right-20 lg:-bottom-10"
                     />
                 </motion.div>
             </motion.div>
@@ -103,19 +106,19 @@ export default function HeroBanner() {
                 variants={idleMovementVariants}
                 animate="idle1"
                 src="/vector/kotakbiru.png"
-                className="absolute top-1/2 left-1/4 transform z-10 -translate-x-1/4 -translate-y-1/2 w-[462px]6px"
+                className="absolute top-1/4 lg:top-1/2 left-3/4 lg:left-1/4 transform z-10 -translate-x-1/4 -translate-y-1/2 w-[462px]6px"
             />
             <motion.img
                 variants={idleMovementVariants}
                 animate="idle2"
                 src="/vector/bolakuning.png"
-                className="absolute bottom-1/4 left-1/4 transform z-10 -translate-x-1/4 -translate-y-1/2 w-[462px]6px"
+                className="absolute lg:bottom-1/4 bottom-2/4 left-24 lg:left-1/4 transform z-10 -translate-x-1/4 -translate-y-1/2 w-[462px]6px"
             />
             <motion.img
                 variants={idleMovementVariants}
                 animate="idle3"
                 src="/vector/kotakorange.png"
-                className="absolute bottom-1/4 left-1/3 transform z-10 -translate-x-1/4 -translate-y-1/2 w-[462px]6px"
+                className="absolute bottom-1/4 lg:left-1/3 left-20 transform z-10 -translate-x-1/4 -translate-y-1/2 w-[462px]6px"
             />
         </div>
     );
